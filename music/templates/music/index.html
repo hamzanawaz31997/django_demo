@@ -1,0 +1,20 @@
+<!--we will use django in html-->
+{% extends 'music/base.html' %}
+
+{% block body %}
+
+    {% if all_albums %}
+        <h3>Here are all my albums:</h3>
+        <ul>
+            {% for album in all_albums %}
+                <!--hard-coded url-->
+                <!--<li><a href="/music/{{ album.id }}/">{{ album.album_title }}</a></li>-->
+                <!--generic url mapping to /music/<album_id>/ -->
+                <li><a href="{%url 'music:detail' album.id %}">{{ album.album_title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <h3>You don't have any albums</h3>
+    {% endif %}
+
+{% endblock %}
